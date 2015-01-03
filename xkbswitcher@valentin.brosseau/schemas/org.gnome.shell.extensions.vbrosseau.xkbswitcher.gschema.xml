@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+	<schema id="org.gnome.shell.extensions.vbrosseau.xkbswitcher" path="/org/gnome/shell/extensions/vbrosseau/xkbswitcher/">
+		<key type="b" name="restore">
+			<default>true</default>
+			<summary />
+			<description/>
+		</key>
+		<key type="s" name="path">
+			<default>".xkb/symbols"</default>
+			<summary />
+			<description/>
+		</key>
+		<key type="s" name="otherlayout">
+			<default>""</default>
+			<summary />
+			<description/>
+		</key>
+		<key type="s" name="lastlayout">
+			<default>""</default>
+			<summary />
+			<description/>
+		</key>
+	</schema>
+</schemalist>
