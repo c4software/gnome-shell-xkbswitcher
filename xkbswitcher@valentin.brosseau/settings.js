@@ -2,7 +2,7 @@ const Gio = imports.gi.Gio;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 
-const SCHEMA_PATH = 'org.gnome.shell.extensions.vbrosseau.xmodmapswitcher';
+const SCHEMA_PATH = 'org.gnome.shell.extensions.vbrosseau.xkbswitcher';
 
 function get_local_gsettings(schema_path) {
 	const GioSSS = Gio.SettingsSchemaSource;

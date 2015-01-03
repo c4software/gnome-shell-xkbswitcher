@@ -44,7 +44,7 @@ const other_layout = config.OTHER_LAYOUT;
 let _indicator, icon, current_layout;
 
 const xmodmapSwitcher = new Lang.Class({
-	Name: 'xmodmapSwitcher.xmodmapSwitcher',
+	Name: 'xkbswitcher.xkbswitcher',
 	Extends: PanelMenu.Button,
 
 	_init: function() {
@@ -74,7 +74,7 @@ function enable_layout(file_layout){
 		lastlayout_pref.set(file_layout);
 		//let command = '/usr/bin/xmodmap -verbose -display :0 '+user_dir+'/.xmodmaplayout/'+file_layout;
 		//resu = GLib.spawn_command_line_sync(command)
-		let command = "sh "Extension.path+"/change.sh '"+user_dir+"' '"+file_layout+"'"
+		let command = "sh "+Extension.path+"/change.sh '"+user_dir+"' '"+file_layout+"'"
 		GLib.spawn_command_line_sync(command);
 		Main.notify(file_layout+" loaded");
 		icon.set_text(file_layout);
