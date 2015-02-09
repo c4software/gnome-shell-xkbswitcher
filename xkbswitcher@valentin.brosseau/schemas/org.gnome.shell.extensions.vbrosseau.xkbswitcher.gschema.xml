@@ -21,5 +21,10 @@
 			<summary />
 			<description/>
 		</key>
+		<key type="as" name="keyboardnext">
+			<default><![CDATA[['<Super>space']]]></default>
+			<summary />
+			<description/>
+		</key>
 	</schema>
 </schemalist>
