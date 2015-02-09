@@ -24,6 +24,10 @@ function get_local_gsettings(schema_path) {
 	return new Gio.Settings({ settings_schema: schemaObj });
 };
 
+function get_gsettings(){
+	return get_local_gsettings(SCHEMA_PATH);
+};
+
 function Prefs() {
 	var self = this;
 	var settings = this.settings = get_local_gsettings(SCHEMA_PATH);
