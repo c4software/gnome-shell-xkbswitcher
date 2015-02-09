@@ -22,6 +22,7 @@ const St = imports.gi.St;
 const Shell = imports.gi.Shell;
 const Util = imports.misc.util;
 const Main = imports.ui.main;
+const Meta = imports.gi.Meta;
 const Panel = imports.ui.panel;
 const PanelMenu = imports.ui.panelMenu;
 const PopupMenu = imports.ui.popupMenu;
@@ -122,6 +123,26 @@ function build_menu(dropdown){
 	});
 }
 
+function get_next_layout(){
+	try{
+		// Get all layout in the folder
+		let command ='ls -1 '+user_dir+'/.xkb/symbols/'; 
+		let layout_av = String(GLib.spawn_command_line_sync(command)[1]).split("\n");
+		let ol = other_layout.get().split(",");
+		layout_av = layout_av.concat(ol);
+
+		current_layout_index = layout_av.indexOf(current_layout);
+		if(current_layout_index+1 <= layout_av.length-1){
+			enable_layout(layout_av[current_layout_index+1]);
+		}else{
+			enable_layout(layout_av[0]);
+		}
+	}
+	catch (err) {
+		// TODO Log
+	}
+}
+
 function start_extension(){
 	if(!_indicator){
 		_indicator = new xmodmapSwitcher;
@@ -135,6 +156,18 @@ function start_extension(){
 			enable_layout(lastlayout_pref.get())
 		});
 	}
+	
+	Main.wm.addKeybinding("keyboardnext",
+		Settings.get_gsettings(),
+		Meta.KeyBindingFlags.NONE,
+		Shell.KeyBindingMode.NORMAL,
+		function(display, screen, window, binding) {
+			Main.notifyError("Next");
+			get_next_layout();
+		}
+	);
+
+	
 }
 
 function enable() {
