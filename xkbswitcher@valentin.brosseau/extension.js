@@ -67,6 +67,15 @@ const xmodmapSwitcher = new Lang.Class({
 				build_menu(elem);
 			}
 	    });
+
+	    Main.wm.addKeybinding("keyboardnext",
+			Settings.get_gsettings(),
+			Meta.KeyBindingFlags.NONE,
+			Shell.KeyBindingMode.NORMAL,
+			function(display, screen, window, binding) {
+				get_next_layout();
+			}
+		);
 	}
 });
 
@@ -93,10 +102,7 @@ function build_menu(dropdown){
 
 	// Recreate the entry.
 	try {
-		let command ='ls -1 '+user_dir+'/.xkb/symbols/'; 
-		let layout_av = String(GLib.spawn_command_line_sync(command)[1]).split("\n");
-		let ol = other_layout.get().split(",");
-		layout_av = layout_av.concat(ol);
+		layout_av = get_available_dispo();
 
 		for (i=0;i<layout_av.length;i++)
 		{
@@ -126,10 +132,7 @@ function build_menu(dropdown){
 function get_next_layout(){
 	try{
 		// Get all layout in the folder
-		let command ='ls -1 '+user_dir+'/.xkb/symbols/'; 
-		let layout_av = String(GLib.spawn_command_line_sync(command)[1]).split("\n");
-		let ol = other_layout.get().split(",");
-		layout_av = layout_av.concat(ol);
+		layout_av = get_available_dispo();
 
 		current_layout_index = layout_av.indexOf(current_layout);
 		if(current_layout_index+1 <= layout_av.length-1){
@@ -141,6 +144,15 @@ function get_next_layout(){
 	catch (err) {
 		// TODO Log
 	}
+}
+
+function get_available_dispo(){
+	let command ='ls -1 '+user_dir+'/.xkb/symbols/';
+	let layout_av = String(GLib.spawn_command_line_sync(command)[1]).split("\n");
+	let ol = other_layout.get().split(",");
+	layout_av = layout_av.concat(ol);
+
+	return layout_av.filter(function(n){ return n != "" }); 
 }
 
 function start_extension(){
@@ -155,19 +167,7 @@ function start_extension(){
 		Mainloop.timeout_add_seconds(1, function(){
 			enable_layout(lastlayout_pref.get())
 		});
-	}
-	
-	Main.wm.addKeybinding("keyboardnext",
-		Settings.get_gsettings(),
-		Meta.KeyBindingFlags.NONE,
-		Shell.KeyBindingMode.NORMAL,
-		function(display, screen, window, binding) {
-			Main.notifyError("Next");
-			get_next_layout();
-		}
-	);
-
-	
+	}	
 }
 
 function enable() {
