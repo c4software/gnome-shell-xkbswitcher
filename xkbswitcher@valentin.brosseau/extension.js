@@ -42,6 +42,9 @@ const restore_pref = config.RESTORE;
 const path_pref = config.PATH;
 const other_layout = config.OTHER_LAYOUT;
 
+const MiscConfig = imports.misc.config;
+const ShellVersion = MiscConfig.PACKAGE_VERSION.split('.');
+
 let _indicator, icon, current_layout;
 
 const xmodmapSwitcher = new Lang.Class({
@@ -68,10 +71,19 @@ const xmodmapSwitcher = new Lang.Class({
 			}
 	    });
 
+		let mode;
+		
+		if (ShellVersion[1] <= 14 ) {
+			mode = Shell.KeyBindingMode.NORMAL;
+		}
+		else if (ShellVersion[1] <= 16) {
+			mode = Shell.ActionMode.NORMAL;
+		}
+
 	    Main.wm.addKeybinding("keyboardnext",
 			Settings.get_gsettings(),
 			Meta.KeyBindingFlags.NONE,
-			Shell.KeyBindingMode.NORMAL,
+			mode,
 			function(display, screen, window, binding) {
 				get_next_layout();
 			}
