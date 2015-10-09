@@ -172,7 +172,7 @@ function start_extension(){
 		_indicator = new xmodmapSwitcher;
 	}
 	
-	Main.panel.addToStatusArea('Xmodmap Switcher', _indicator);
+	Main.panel.addToStatusArea('Xkb Switcher', _indicator);
 	
 	if(restore_pref.get() && lastlayout_pref.get() != ""){
 		// Add delay to enable

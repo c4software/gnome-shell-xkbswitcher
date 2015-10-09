@@ -56,18 +56,23 @@ function path_box(){
     });
 
     path_label = new Gtk.Label({
-        label: "Path to the layouts folder",
+        label: "Layouts folder :",
         xalign: 0
     });
 
-    let path_entry = new Gtk.Entry({text: path_pref.get(), hexpand: true, margin_bottom: 12 });
-
-    path_entry.connect('notify::text', function(entry) {
-        path_pref.set(entry.text);
+    path_text = new Gtk.Label({
+        label: "~/.xkb/symbols/",
+        xalign: 0
     });
 
+    // let path_entry = new Gtk.Entry({text: path_pref.get(), hexpand: true, margin_bottom: 12 });
+
+    // path_entry.connect('notify::text', function(entry) {
+    //     path_pref.set(entry.text);
+    // });
+
     path_hbox.pack_start(path_label, true, true, 0);
-    path_hbox.add(path_entry);
+    path_hbox.add(path_text);
     return path_hbox;
 }
 
