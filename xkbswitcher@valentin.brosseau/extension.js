@@ -78,6 +78,8 @@ const xmodmapSwitcher = new Lang.Class({
 		}
 		else if (ShellVersion[1] <= 16) {
 			mode = Shell.ActionMode.NORMAL;
+		}else{
+			mode = Shell.ActionMode.NORMAL;
 		}
 
 	    Main.wm.addKeybinding("keyboardnext",
