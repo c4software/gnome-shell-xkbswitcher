@@ -4,6 +4,6 @@ Xkbswitcher
 
 **Work In Progress**
 
-Xkbswitcher is a simple Gnome-Shell extension to simplify the usage of a custom layout located in a user directory and in for those located on the sytem.
+Xkbswitcher is a simple Gnome-Shell extension to simplify the usage of customs layout located in the user directory (also at the system level, but it's not the purpose of this tool)
 
 ![Extension](screen.png)
