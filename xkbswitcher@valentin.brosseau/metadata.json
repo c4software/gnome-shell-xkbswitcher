@@ -6,9 +6,10 @@
     "3.20",
     "3.22",
     "3.24",
-    "3.26"
+    "3.26",
+    "3.30"
   ], 
   "uuid": "xkbswitcher@valentin.brosseau", 
-  "name": "XKB Switcher", 
+  "name": "Gnome Shell XKB Switcher", 
   "description": "Allow per user custom layout (not system built-in layout) (via setxkbmap)"
 }
