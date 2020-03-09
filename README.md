@@ -9,7 +9,7 @@ Gnome Shell Xkbswitcher is a simple Gnome-Shell extension to simplify the usage 
 
 - [Download the extension](https://github.com/c4software/gnome-shell-xkbswitcher/archive/master.zip)
 - Move the `xkbswitcher@valentin.brosseau` folder to `~/.local/share/gnome-shell/extensions/`
-- Restart Gnome Shell (alt-f2 then type `r`)
+- Restart Gnome Shell (`alt-f2` then type `r`)
 - Enable the extension (https://extensions.gnome.org/local/)
 
 ## Configuration
